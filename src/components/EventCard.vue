@@ -24,17 +24,17 @@ defineProps({
   padding: 1.5rem;
   width: 15rem;
   cursor: pointer;
-  border: 0.1rem solid #39495c;
+  border: 0.1rem solid #ffffff;
   margin-bottom: 1rem;
 }
 
 .event-card:hover {
   transform: scale(1.01);
-  box-shadow: 0 0.2rem 0.6rem 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.2rem 0.6rem 0 rgba(0, 0, 0, 0.5);
 }
 
 .event-link {
-  color: #2c3e50;
+  color: #ffffff;
   text-decoration: none;
 }
 </style>

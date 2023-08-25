@@ -22,21 +22,21 @@ import { RouterLink, RouterView } from 'vue-router'
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #ffffff;
 }
 nav {
   padding: 2rem;
 }
 nav a {
   font-weight: 700;
-  color: #2c3e50;
+  color: #ffffff;
 }
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: #c18bff;
 }
 
 body {
-  background: #ffffff;
+  background: #333;
 }
 
 h2 {
