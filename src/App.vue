@@ -101,6 +101,9 @@ button:focus,
   cursor: pointer;
 }
 
+#nprogress .bar {
+  background: #c18bff !important;
+}
 #flashMessage {
   max-width: 25rem;
 

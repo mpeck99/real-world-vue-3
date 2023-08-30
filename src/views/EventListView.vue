@@ -23,7 +23,7 @@
 <script>
 import EventCard from '@/components/EventCard.vue'
 import EventService from '@/services/EventServices.js'
-import { watchEffect } from 'vue'
+import Nprogress from 'nprogress'
 
 export default {
   name: 'EventListView',
@@ -40,20 +40,41 @@ export default {
     }
   },
 
-  created() {
-    watchEffect(() => {
-      this.events = null
-      EventService.getEvents(2, this.page)
-        .then((response) => {
-          this.events = response.data
-          this.totalEvents = response.headers['x-total-count']
-          var totalPages = Math.ceil(this.totalEvents / 2)
-          this.pages = totalPages
+  beforeRouteEnter(routeTo, routeFrom, next) {
+    Nprogress.start()
+    EventService.getEvents(2, parseInt(routeTo.query.page) || 1)
+      .then((response) => {
+        next((comp) => {
+          comp.events = response.data
+          comp.totalEvents = response.headers['x-total-count']
+
+          var totalPages = Math.ceil(comp.totalEvents / 2)
+          comp.pages = totalPages
         })
-        .catch(() => {
-          this.$router.push({ name: 'NetworkError' })
-        })
-    })
+      })
+      .catch(() => {
+        next({ name: 'NetworkError' })
+      })
+      .finally(() => {
+        Nprogress.done()
+      })
+  },
+  beforeRouteUpdate(routeTo) {
+    Nprogress.start()
+    EventService.getEvents(2, parseInt(routeTo.query.page) || 1)
+      .then((response) => {
+        this.events = response.data
+        this.totalEvents = response.headers['x-total-count']
+
+        var totalPages = Math.ceil(this.totalEvents / 2)
+        this.pages = totalPages
+      })
+      .catch(() => {
+        return { name: 'NetworkError' }
+      })
+      .finally(() => {
+        Nprogress.done()
+      })
   },
 }
 </script> 
