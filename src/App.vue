@@ -16,7 +16,7 @@ import { RouterLink, RouterView } from 'vue-router'
   </div>
 </template>
 
-<style>
+<style >
 #layout {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -31,6 +31,12 @@ nav a {
   font-weight: 700;
   color: #ffffff;
 }
+
+nav a:hover,
+nav a:focus {
+  color: #dcbdff;
+}
+
 nav a.router-link-exact-active {
   color: #c18bff;
 }
@@ -43,5 +49,23 @@ h2 {
   font-size: 1.2rem;
 
   margin-top: 0;
+}
+
+button {
+  padding: 1rem;
+
+  border: none;
+  background: #c18bff;
+  border-radius: 0.5rem;
+
+  font-weight: 700;
+  font-size: 1rem;
+  color: #333;
+}
+
+button:hover,
+button:focus {
+  background: #ffffff;
+  cursor: pointer;
 }
 </style>
