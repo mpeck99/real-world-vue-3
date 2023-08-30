@@ -50,8 +50,8 @@ export default {
           var totalPages = Math.ceil(this.totalEvents / 2)
           this.pages = totalPages
         })
-        .catch((error) => {
-          console.log(error)
+        .catch(() => {
+          this.$router.push({ name: 'NetworkError' })
         })
     })
   },

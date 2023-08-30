@@ -6,6 +6,7 @@ import AboutView from '../views/AboutView.vue'
 import Register from '@/views/event/Register.vue'
 import Edit from '@/views/event/Edit.vue'
 import NotFound from '@/views/404.vue'
+import NetworkError from '@/views/NetworkError.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -63,7 +64,18 @@ const router = createRouter({
       path: '/:catchAl(.*)',
       name: '404',
       component: NotFound
-    }, 
+    },
+    {
+      path: '/404/:resource',
+      name: '404Resource',
+      component: NotFound,
+      props: true
+    },
+    {
+      path: '/network-error', 
+      name: 'NetworkError',
+      component: NetworkError
+    }
   ]
 })
 
