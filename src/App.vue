@@ -4,6 +4,9 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <template>
   <div id="layout">
+    <div id="flashMessage" v-if="GStore.flashMessage">
+      {{ GStore.flashMessage }}
+    </div>
     <header>
       <div class="wrapper">
         <nav>
@@ -14,7 +17,13 @@ import { RouterLink, RouterView } from 'vue-router'
     </header>
     <RouterView />
   </div>
-</template>
+</template> 
+
+<script>
+export default {
+  inject: ['GStore'],
+}
+</script>
 
 <style >
 body,
@@ -90,5 +99,28 @@ button:focus,
 .btn:focus {
   background: #ffffff;
   cursor: pointer;
+}
+
+#flashMessage {
+  max-width: 25rem;
+
+  padding: 1rem;
+  margin: 0 auto;
+
+  color: #333;
+  font-weight: 400;
+
+  animation: alertFade 3s ease-in-out;
+  border-radius: 0.5rem;
+}
+
+@keyframes alertFade {
+  from {
+    background: #dcbdff;
+  }
+  to {
+    background: transparent;
+    color: #ffffff;
+  }
 }
 </style>
