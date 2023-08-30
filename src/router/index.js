@@ -5,6 +5,7 @@ import Details from '../views/event/Details.vue'
 import AboutView from '../views/AboutView.vue'
 import Register from '@/views/event/Register.vue'
 import Edit from '@/views/event/Edit.vue'
+import NotFound from '@/views/404.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -58,6 +59,11 @@ const router = createRouter({
         return { path: '/events/' + to.params.afterEvent}
       }
     },
+    {
+      path: '/:catchAl(.*)',
+      name: '404',
+      component: NotFound
+    }, 
   ]
 })
 

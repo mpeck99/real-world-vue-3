@@ -17,6 +17,23 @@ import { RouterLink, RouterView } from 'vue-router'
 </template>
 
 <style >
+body,
+html {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 100%;
+}
+
+#app,
+#layout {
+  height: 100%;
+}
+
 #layout {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -51,8 +68,11 @@ h2 {
   margin-top: 0;
 }
 
-button {
+button,
+.btn {
+  display: inline-block;
   padding: 1rem;
+  margin-top: 1rem;
 
   border: none;
   background: #c18bff;
@@ -61,10 +81,13 @@ button {
   font-weight: 700;
   font-size: 1rem;
   color: #333;
+  text-decoration: none;
 }
 
 button:hover,
-button:focus {
+button:focus,
+.btn:hover,
+.btn:focus {
   background: #ffffff;
   cursor: pointer;
 }
