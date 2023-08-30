@@ -16,13 +16,19 @@ const router = createRouter({
       props: route => ({ page: parseInt(route.query.page) || 1 })
     },
     {
-      path: '/about',
+      path: '/about-us',
       name: 'about',
-
+      // alias: '/about', - FOR SEO reasons you might want to avoid alias to not have content in two places & google might penalize you
       component: AboutView,
+    }
+    ,    
+    {
+      // This is a redirect
+      path: '/about',
+      redirect: {name: 'about'},
     },
     {
-      path: '/event/:id',
+      path: '/events/:id',
       name: 'Layout',
       props: true,
       component: Layout,
@@ -43,6 +49,14 @@ const router = createRouter({
           component: Edit
         }
       ]
+    },
+    {
+      // Match on /event/ and capture everything else in afterEvent 
+      // Using .* so that it will include / in the match (doesnt by default)
+      path: '/event/:afterEvent(.*)',
+      redirect: to =>{
+        return { path: '/events/' + to.params.afterEvent}
+      }
     },
   ]
 })
