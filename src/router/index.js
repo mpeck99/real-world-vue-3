@@ -1,10 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import EventListView from '../views/EventListView.vue'
 import Layout from '../views/event/Layout.vue'
-import Details from '../views/event/Details.vue'
-import AboutView from '../views/AboutView.vue'
+const Details = () => import(/* webpackChunkName: "details" */  '../views/event/Details.vue')
+const AboutView = () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
 import Register from '@/views/event/Register.vue'
-import Edit from '@/views/event/Edit.vue'
+const Edit = () => import(/* webpackChunkName: "edit" */ '@/views/event/Edit.vue') 
 import NotFound from '@/views/404.vue'
 import NetworkError from '@/views/NetworkError.vue'
 import Nprogress from 'nprogress'
